@@ -3,7 +3,7 @@ TARGET := part1
 
 .PHONY: all
 all:
-	RUSTC $(TARGET).rs
+	RUSTC $(TARGET).rs -o bin/$(TARGET)
 .PHONY: run
 run: all
-	./$(TARGET)
+	./bin/$(TARGET)
