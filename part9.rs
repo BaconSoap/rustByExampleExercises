@@ -1,11 +1,10 @@
 fn main() {
-	let result = hash(515);
 	for i in range(-99,99) {
 		print!("{}, ", hash(i));
 	}
 }
 
-//convert a number to a relatively uniform
+//convert a number to a relatively uniform hash value from 1-9 inclusive
 fn hash(num: int) -> int {
 	if num == 0 {
 		return 0;
@@ -17,7 +16,8 @@ fn hash(num: int) -> int {
 	if currentNum < 0 {
 		currentNum = -currentNum;
 	}
-
+	
+	//sum the digits of the number
 	loop {
 		let digit = currentNum % 10;
 		sum += digit;
@@ -27,8 +27,9 @@ fn hash(num: int) -> int {
 		currentNum /= 10;
 	}
 	
+	//if there multiple digits, run the hash function again
 	if sum >= 10 {
 		return hash(sum);
 	}
-	sum
+	return sum;
 }
